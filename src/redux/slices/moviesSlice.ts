@@ -36,6 +36,7 @@ const moviesSlice = createSlice({
     });
     builder.addCase(fetchMovies.rejected, (state, { error }) => {
       state.isLoading = false;
+      state.data = undefined;
       state.error = error.message;
     });
   },
