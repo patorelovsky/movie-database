@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ResponsiveAppBar, {
   ResponsiveAppBarNavMenuItem,
 } from "./components/ResponsiveAppBar";
-import MovieSearch from "./components/MovieSearch";
+import MovieSearchPage from "./components/MovieSearchPage";
 
 const APP_TITLE = "Movie Database";
 
@@ -17,8 +17,11 @@ function App() {
     <BrowserRouter>
       <ResponsiveAppBar title={APP_TITLE} navMenuItems={navMenuItems} />
       <Routes>
-        <Route path="/" element={<MovieSearch />} />
-        <Route path={movieSearchNavMenuItem.path} element={<MovieSearch />} />
+        <Route path="/" element={<MovieSearchPage />} />
+        <Route
+          path={movieSearchNavMenuItem.path}
+          element={<MovieSearchPage />}
+        />
       </Routes>
     </BrowserRouter>
   );
