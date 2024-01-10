@@ -9,11 +9,11 @@ import { Movie } from "../redux";
 
 export default function MovieCard({ Title, Year, Poster }: Movie) {
   return (
-    <Card sx={{ height: 100, display: "flex" }}>
+    <Card sx={{ height: 100, width: 400, display: "flex" }}>
       <CardMedia
         component="img"
         image={Poster}
-        sx={{ objectFit: "contain", flex: 1 }}
+        sx={{ objectFit: "contain", flex: 1, height: 100, width: 70 }}
       />
       <CardContent
         sx={{
