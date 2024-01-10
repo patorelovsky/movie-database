@@ -25,6 +25,10 @@ type Response = {
 export const fetchMovies = createAsyncThunk(
   "movies/fetch",
   async ({ searchTerm, page }: FetchMoviesArgs) => {
+    if (!searchTerm) {
+      return { movies: [] };
+    }
+
     const { data } = await axios.get<Response>(MOVIES_ENDPOINT, {
       params: {
         page,
