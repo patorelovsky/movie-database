@@ -5,35 +5,31 @@ import {
   InputAdornment,
   TextField,
 } from "@mui/material";
-import {
-  fetchMovies,
-  setSearchTerm,
-  useAppDispatch,
-  useAppSelector,
-} from "../redux";
+import { useState } from "react";
+import { setSearchTerm, useAppDispatch } from "../redux";
 
 type MovieSearchBarProps = {
   isLoading: boolean;
 };
 
 export default function MovieSearchBar({ isLoading }: MovieSearchBarProps) {
-  const { searchTerm, page } = useAppSelector(({ movieSearch }) => movieSearch);
+  const [value, setValue] = useState("");
 
   const dispatch = useAppDispatch();
   const handleSearchClick = () => {
-    dispatch(fetchMovies({ searchTerm, page }));
+    dispatch(setSearchTerm(value));
   };
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === "Enter") {
-      dispatch(fetchMovies({ searchTerm, page }));
+      dispatch(setSearchTerm(value));
     }
   };
 
   return (
     <TextField
       sx={{ width: { xs: "100%", sm: 500 } }}
-      value={searchTerm}
-      onChange={(e) => dispatch(setSearchTerm(e.target.value))}
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
       onKeyDown={handleKeyDown}
       variant="standard"
       disabled={isLoading}

@@ -1,26 +1,50 @@
-import { Alert, Box, Grid, Pagination } from "@mui/material";
-import { useAppSelector } from "../redux";
+import { Alert, Grid, Pagination, Stack } from "@mui/material";
+import { useEffect } from "react";
+import { fetchMovies, setPage, useAppDispatch, useAppSelector } from "../redux";
 import MovieCard from "./MovieCard";
 import MovieSearchBar from "./MovieSearchBar";
 
 export default function MovieSearchPage() {
   const { error, data, isLoading } = useAppSelector(({ movies }) => movies);
+  const { searchTerm, page } = useAppSelector(({ movieSearch }) => movieSearch);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchMovies({ searchTerm, page }));
+  }, [dispatch, searchTerm, page]);
+
+  const handlePaginationChange = (
+    _event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
+    dispatch(setPage(value));
+  };
 
   return (
-    <Box sx={{ m: 2 }}>
+    <Stack alignItems="center" sx={{ m: 2, height: "100%" }}>
       <MovieSearchBar isLoading={isLoading} />
       {data && (
-        <Box>
-          <Grid container spacing={2} sx={{ mt: 2 }}>
-            {data.movies.map((movie) => (
-              <Grid item key={movie.imdbID}>
-                <MovieCard {...movie} />
-              </Grid>
-            ))}
-          </Grid>
-        </Box>
+        <Grid container spacing={2} sx={{ mt: 2, mb: 4 }}>
+          {data.movies.map((movie) => (
+            <Grid item key={movie.imdbID}>
+              <MovieCard {...movie} />
+            </Grid>
+          ))}
+        </Grid>
+      )}
+      {data && (
+        <Pagination
+          size="large"
+          showFirstButton
+          showLastButton
+          color="primary"
+          count={data.pageCount}
+          page={page}
+          onChange={handlePaginationChange}
+        />
       )}
       {error && <Alert severity="error">{error}</Alert>}
-    </Box>
+    </Stack>
   );
 }
