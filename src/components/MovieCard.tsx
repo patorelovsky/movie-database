@@ -5,9 +5,9 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import { Movie } from "../redux";
+import { SearchMovie } from "../api";
 
-export default function MovieCard({ Title, Year, Poster }: Movie) {
+export default function MovieCard({ Title, Year, Poster }: SearchMovie) {
   return (
     <Card sx={{ height: 100, width: 400, display: "flex" }}>
       <CardMedia

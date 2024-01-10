@@ -1,12 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchMovies, Movie } from "../thunks/fetchMovies";
+import { fetchMovies } from "../thunks/fetchMovies";
+import { SearchMovie } from "../../api";
 
 const PAGE_SIZE = 10;
 
 type MoviesSliceState = {
   isLoading: boolean;
   data?: {
-    movies: Movie[];
+    movies: SearchMovie[];
     pageCount?: number;
   };
   error?: string;
