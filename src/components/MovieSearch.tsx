@@ -53,8 +53,8 @@ export default function MovieSearch() {
       />
       <Grid container spacing={2} sx={{ mt: 2 }}>
         {data.movies.map((movie) => (
-          <Grid item>
-            <MovieCard key={movie.imdbID} {...movie} />
+          <Grid item key={movie.imdbID}>
+            <MovieCard {...movie} />
           </Grid>
         ))}
       </Grid>
