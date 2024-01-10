@@ -56,7 +56,11 @@ export default function MovieSearchPage() {
             onChange={handlePaginationChange}
           />
         )}
-        {error && <Alert severity="error">{error}</Alert>}
+        {error && (
+          <Alert sx={{ m: 5 }} severity="error">
+            {error}
+          </Alert>
+        )}
       </Stack>
     </Box>
   );
