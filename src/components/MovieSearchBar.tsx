@@ -1,18 +1,13 @@
 import SearchIcon from "@mui/icons-material/Search";
-import {
-  CircularProgress,
-  IconButton,
-  InputAdornment,
-  TextField,
-} from "@mui/material";
+import { IconButton, InputAdornment, TextField } from "@mui/material";
 import { useState } from "react";
 import { setSearchTerm, useAppDispatch } from "../redux";
 
 type MovieSearchBarProps = {
-  isLoading: boolean;
+  disabled: boolean;
 };
 
-export default function MovieSearchBar({ isLoading }: MovieSearchBarProps) {
+export default function MovieSearchBar({ disabled }: MovieSearchBarProps) {
   const [value, setValue] = useState("");
 
   const dispatch = useAppDispatch();
@@ -32,18 +27,14 @@ export default function MovieSearchBar({ isLoading }: MovieSearchBarProps) {
       onChange={(e) => setValue(e.target.value)}
       onKeyDown={handleKeyDown}
       variant="standard"
-      disabled={isLoading}
+      disabled={disabled}
       label="Search for movies..."
       InputProps={{
         endAdornment: (
           <InputAdornment position="end">
-            {isLoading ? (
-              <CircularProgress size={20} />
-            ) : (
-              <IconButton edge="end" onClick={handleSearchClick}>
-                <SearchIcon />
-              </IconButton>
-            )}
+            <IconButton edge="end" onClick={handleSearchClick}>
+              <SearchIcon />
+            </IconButton>
           </InputAdornment>
         ),
       }}
