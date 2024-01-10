@@ -12,11 +12,12 @@ import {
   useAppSelector,
 } from "../redux";
 
-export default function MovieSearchBar() {
-  const {
-    isLoading,
-    data: { searchTerm, page },
-  } = useAppSelector(({ movieSearch }) => movieSearch);
+type MovieSearchBarProps = {
+  isLoading: boolean;
+};
+
+export default function MovieSearchBar({ isLoading }: MovieSearchBarProps) {
+  const { searchTerm, page } = useAppSelector(({ movieSearch }) => movieSearch);
 
   const dispatch = useAppDispatch();
   const handleSearchClick = () => {
