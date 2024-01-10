@@ -33,11 +33,11 @@ export default function MovieSearchPage() {
       {isLoading && <LinearProgress />}
       <Stack
         alignItems="center"
-        sx={{ m: 2, height: "100%", mt: isLoading ? "12px" : "16px" }}
+        sx={{ m: 4, height: "100%", mt: isLoading ? "12px" : "16px" }}
       >
         <MovieSearchBar disabled={isLoading} />
         {data && (
-          <Grid container spacing={2} sx={{ mt: 2, mb: 4 }}>
+          <Grid container spacing={2} sx={{ mt: 4, mb: 4 }}>
             {data.movies.map((movie) => (
               <Grid item key={movie.imdbID}>
                 <MovieCard {...movie} />
