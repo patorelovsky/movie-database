@@ -4,8 +4,6 @@ import { fetchMovies, Movie } from "../thunks/fetchMovies";
 const PAGE_SIZE = 10;
 
 type MoviesSliceState = {
-  searchTerm: string;
-  page: number;
   isLoading: boolean;
   data?: {
     movies: Movie[];
@@ -14,13 +12,13 @@ type MoviesSliceState = {
   error?: string;
 };
 
+const initialState: MoviesSliceState = {
+  isLoading: false,
+};
+
 const moviesSlice = createSlice({
   name: "movies",
-  initialState: {
-    isLoading: false,
-    page: 1,
-    searchTerm: "",
-  } as MoviesSliceState,
+  initialState,
   reducers: {},
   extraReducers(builder) {
     builder.addCase(fetchMovies.pending, (state) => {

@@ -5,12 +5,14 @@ type MovieSearchSliceState = {
   page: number;
 };
 
+const initialState: MovieSearchSliceState = {
+  searchTerm: "",
+  page: 1,
+};
+
 const movieSearchSlice = createSlice({
   name: "movieSearch",
-  initialState: {
-    searchTerm: "",
-    page: 1,
-  } as MovieSearchSliceState,
+  initialState,
   reducers: {
     setSearchTerm(state, { payload }: PayloadAction<string>) {
       state.searchTerm = payload;
