@@ -9,6 +9,9 @@ export type FetchMoviesArgs = {
 export const fetchMovies = createAsyncThunk(
   "movies/fetch",
   async ({ searchTerm, page }: FetchMoviesArgs) => {
+    if (!searchTerm) {
+      return undefined;
+    }
     return await fetchMoviesApi(searchTerm, page);
   }
 );

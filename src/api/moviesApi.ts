@@ -18,7 +18,7 @@ type Response = {
 
 export async function fetchMoviesApi(searchTerm: string, page: number) {
   if (!searchTerm) {
-    return undefined;
+    throw Error("Invalid search term.");
   }
 
   const { data } = await axios.get<Response>(MOVIES_ENDPOINT, {
