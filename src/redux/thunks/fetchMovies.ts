@@ -23,13 +23,13 @@ type Response = {
 
 export const fetchMovies = createAsyncThunk(
   "movies/fetch",
-  async (args: FetchMoviesArgs) => {
+  async ({ searchTerm, page }: FetchMoviesArgs) => {
     const { data } = await axios.get<Response>(MOVIES_ENDPOINT, {
       params: {
-        page: args.page,
+        page,
         type: "movie",
         r: "json",
-        s: args.searchTerm,
+        s: searchTerm,
         apikey: process.env.REACT_APP_OMDB_API_KEY,
       },
     });
