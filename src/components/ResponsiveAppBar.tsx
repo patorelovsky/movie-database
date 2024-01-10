@@ -31,6 +31,10 @@ export default function ResponsiveAppBar({
     setAnchorElNav(event.currentTarget);
   const handleCloseNavMenu = () => setAnchorElNav(undefined);
   const navigate = useNavigate();
+  const handleTitleClick = (event: MouseEvent<HTMLElement>) => {
+    event.preventDefault();
+    navigate("/");
+  };
   const handleNavMenuItemClick = ({ path }: ResponsiveAppBarNavMenuItem) => {
     handleCloseNavMenu();
     navigate(path);
@@ -45,7 +49,8 @@ export default function ResponsiveAppBar({
             variant="h6"
             noWrap
             component="a"
-            href=""
+            href="/"
+            onClick={handleTitleClick}
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -103,7 +108,8 @@ export default function ResponsiveAppBar({
             variant="h5"
             noWrap
             component="a"
-            href=""
+            href="/"
+            onClick={handleTitleClick}
             sx={{
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
