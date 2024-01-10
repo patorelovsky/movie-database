@@ -1,19 +1,21 @@
+import SearchIcon from "@mui/icons-material/Search";
 import {
   Alert,
   AlertTitle,
   Box,
   CircularProgress,
+  Grid,
   IconButton,
   InputAdornment,
   TextField,
 } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
 import {
   fetchMovies,
   setSearchTerm,
   useAppDispatch,
   useAppSelector,
 } from "../redux";
+import MovieCard from "./MovieCard";
 
 export default function MovieSearch() {
   const dispatch = useAppDispatch();
@@ -33,12 +35,13 @@ export default function MovieSearch() {
         onChange={(e) => dispatch(setSearchTerm(e.target.value))}
         onKeyDown={(e) => e.key === "Enter" && handleSearchClick()}
         variant="standard"
+        disabled={isLoading}
         label="Search for movies..."
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">
               {isLoading ? (
-                <CircularProgress />
+                <CircularProgress size={20} />
               ) : (
                 <IconButton edge="end" onClick={handleSearchClick}>
                   <SearchIcon />
@@ -48,11 +51,13 @@ export default function MovieSearch() {
           ),
         }}
       />
-      <Box>
+      <Grid container spacing={2} sx={{ mt: 2 }}>
         {data.movies.map((movie) => (
-          <p key={movie.imdbID}>{movie.Title}</p>
+          <Grid item>
+            <MovieCard key={movie.imdbID} {...movie} />
+          </Grid>
         ))}
-      </Box>
+      </Grid>
       {error && (
         <Alert severity="error">
           <AlertTitle>{error.name}</AlertTitle>
