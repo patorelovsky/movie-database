@@ -8,7 +8,7 @@ const APP_TITLE = "Movie Database";
 
 const movieSearchNavMenuItem: ResponsiveAppBarNavMenuItem = {
   label: "Movie Search",
-  path: "./movie-search",
+  path: "/movie-search",
 };
 const navMenuItems: ResponsiveAppBarNavMenuItem[] = [movieSearchNavMenuItem];
 
