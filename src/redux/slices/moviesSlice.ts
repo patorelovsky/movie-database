@@ -31,7 +31,7 @@ const moviesSlice = createSlice({
       state.error = undefined;
       state.data = payload && {
         movies: payload.movies,
-        pageCount: payload.totalResults / PAGE_SIZE,
+        pageCount: Math.ceil(payload.totalResults / PAGE_SIZE),
       };
     });
     builder.addCase(fetchMovies.rejected, (state, { error }) => {
