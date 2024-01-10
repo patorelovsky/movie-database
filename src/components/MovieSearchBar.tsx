@@ -5,10 +5,14 @@ import { setSearchTerm, useAppDispatch } from "../redux";
 
 type MovieSearchBarProps = {
   disabled: boolean;
+  searchTerm: string;
 };
 
-export default function MovieSearchBar({ disabled }: MovieSearchBarProps) {
-  const [value, setValue] = useState("");
+export default function MovieSearchBar({
+  disabled,
+  searchTerm,
+}: MovieSearchBarProps) {
+  const [value, setValue] = useState(searchTerm);
 
   const dispatch = useAppDispatch();
   const handleSearchClick = () => {

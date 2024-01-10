@@ -35,7 +35,7 @@ export default function MovieSearchPage() {
         alignItems="center"
         sx={{ m: 4, height: "100%", mt: isLoading ? "12px" : "16px" }}
       >
-        <MovieSearchBar disabled={isLoading} />
+        <MovieSearchBar searchTerm={searchTerm} disabled={isLoading} />
         {data && (
           <Grid container spacing={2} sx={{ mt: 4, mb: 4 }}>
             {data.movies.map((movie) => (

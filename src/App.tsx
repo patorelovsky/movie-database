@@ -4,10 +4,7 @@ import MovieSearchPage from "./components/MovieSearchPage";
 import ResponsiveAppBar, {
   ResponsiveAppBarNavMenuItem,
 } from "./components/ResponsiveAppBar";
-
-const APP_TITLE = "Movie Database";
-
-const MOVIE_DETAIL_PATH = "movie-detail";
+import { APP_TITLE, MOVIE_DETAIL_PATH } from "./utils/constants";
 
 const movieSearchNavMenuItem: ResponsiveAppBarNavMenuItem = {
   label: "Movie Search",

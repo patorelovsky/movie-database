@@ -6,10 +6,26 @@ import {
   Typography,
 } from "@mui/material";
 import { SearchMovie } from "../api";
+import { useNavigate } from "react-router-dom";
+import { MOVIE_DETAIL_PATH } from "../utils/constants";
 
-export default function MovieCard({ Title, Year, Poster }: SearchMovie) {
+export default function MovieCard({
+  imdbID,
+  Title,
+  Year,
+  Poster,
+}: SearchMovie) {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(`${MOVIE_DETAIL_PATH}/${imdbID}`);
+  };
+
   return (
-    <Card sx={{ height: 100, width: 400, display: "flex" }}>
+    <Card
+      component="a"
+      onClick={handleClick}
+      sx={{ height: 100, width: 400, display: "flex", cursor: "pointer" }}
+    >
       <CardMedia
         component="img"
         image={Poster}
