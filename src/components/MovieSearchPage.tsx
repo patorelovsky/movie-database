@@ -1,4 +1,4 @@
-import { Alert, AlertTitle, Box, Grid } from "@mui/material";
+import { Alert, Box, Grid } from "@mui/material";
 import { useAppSelector } from "../redux";
 import MovieCard from "./MovieCard";
 import MovieSearchBar from "./MovieSearchBar";
@@ -16,12 +16,7 @@ export default function MovieSearchPage() {
           </Grid>
         ))}
       </Grid>
-      {error && (
-        <Alert severity="error">
-          <AlertTitle>{error.name}</AlertTitle>
-          {error.message}
-        </Alert>
-      )}
+      {error && <Alert severity="error">{error}</Alert>}
     </Box>
   );
 }

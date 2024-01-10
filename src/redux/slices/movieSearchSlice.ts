@@ -8,7 +8,7 @@ const initialState = {
     searchTerm: "",
     page: 1,
   },
-  error: undefined as Error | undefined,
+  error: undefined as string | undefined,
 };
 
 const movieSearchSlice = createSlice({
@@ -26,13 +26,17 @@ const movieSearchSlice = createSlice({
     builder.addCase(fetchMovies.pending, (state) => {
       state.isLoading = true;
     });
-    builder.addCase(fetchMovies.fulfilled, (state, { payload }) => {
-      state.isLoading = false;
-      state.data.movies = payload;
-    });
+    builder.addCase(
+      fetchMovies.fulfilled,
+      (state, { payload: { totalResults, movies } }) => {
+        state.isLoading = false;
+        state.error = undefined;
+        state.data.movies = movies;
+      }
+    );
     builder.addCase(fetchMovies.rejected, (state, { error }) => {
       state.isLoading = false;
-      state.error = Error(error.message);
+      state.error = error.message;
     });
   },
 });

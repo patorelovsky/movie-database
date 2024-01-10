@@ -16,9 +16,10 @@ export type Movie = {
 };
 
 type Response = {
-  Response: boolean;
+  Response: "True" | "False";
   Search: Movie[];
   totalResults: number;
+  Error: string;
 };
 
 export const fetchMovies = createAsyncThunk(
@@ -34,7 +35,10 @@ export const fetchMovies = createAsyncThunk(
       },
     });
 
-    // TODO: Error handling
-    return data.Search ?? [];
+    if (data.Response === "False") {
+      throw Error(data.Error);
+    }
+
+    return { totalResults: data.totalResults, movies: data.Search ?? [] };
   }
 );
