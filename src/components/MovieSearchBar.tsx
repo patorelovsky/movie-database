@@ -31,6 +31,7 @@ export default function MovieSearchBar({ isLoading }: MovieSearchBarProps) {
 
   return (
     <TextField
+      sx={{ width: { xs: "100%", sm: 500 } }}
       value={searchTerm}
       onChange={(e) => dispatch(setSearchTerm(e.target.value))}
       onKeyDown={handleKeyDown}
