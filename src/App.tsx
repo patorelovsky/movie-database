@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import MovieDetailPage from "./components/MovieDetailPage";
 import MovieSearchPage from "./components/MovieSearchPage";
 import ResponsiveAppBar, {
@@ -17,7 +17,10 @@ function App() {
     <BrowserRouter>
       <ResponsiveAppBar title={APP_TITLE} navMenuItems={navMenuItems} />
       <Routes>
-        <Route path="/" element={<MovieSearchPage />} />
+        <Route
+          path="/"
+          element={<Navigate replace to={movieSearchNavMenuItem.path} />}
+        />
         <Route
           path={movieSearchNavMenuItem.path}
           element={<MovieSearchPage />}
