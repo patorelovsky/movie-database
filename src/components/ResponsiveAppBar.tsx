@@ -41,7 +41,7 @@ export default function ResponsiveAppBar({
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="sticky">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <MovieIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
