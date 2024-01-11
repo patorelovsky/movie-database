@@ -5,19 +5,19 @@ import ResponsiveAppBar, {
   ResponsiveAppBarNavMenuItem,
 } from "./components/ResponsiveAppBar";
 import { APP_TITLE, MOVIE_DETAIL_PATH } from "./utils/constants";
-import MyFavoriteMoviesPage from "./components/MyFavoriteMoviesPage";
+import FavoriteMoviesPage from "./components/FavoriteMoviesPage";
 
 const movieSearchNavMenuItem: ResponsiveAppBarNavMenuItem = {
   label: "Movie Search",
   path: "/movie-search",
 };
-const myFavoriteMoviesNavMenuItem: ResponsiveAppBarNavMenuItem = {
+const favoriteMoviesNavMenuItem: ResponsiveAppBarNavMenuItem = {
   label: "My Favorite Movies",
-  path: "/my-favorite-movies",
+  path: "/favorite-movies",
 };
 const navMenuItems: ResponsiveAppBarNavMenuItem[] = [
   movieSearchNavMenuItem,
-  myFavoriteMoviesNavMenuItem,
+  favoriteMoviesNavMenuItem,
 ];
 
 function App() {
@@ -38,8 +38,8 @@ function App() {
           element={<MovieDetailPage />}
         />
         <Route
-          path={myFavoriteMoviesNavMenuItem.path}
-          element={<MyFavoriteMoviesPage />}
+          path={favoriteMoviesNavMenuItem.path}
+          element={<FavoriteMoviesPage />}
         />
       </Routes>
     </BrowserRouter>
