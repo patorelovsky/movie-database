@@ -9,7 +9,7 @@ import { SearchMovie } from "../api";
 import { useNavigate } from "react-router-dom";
 import { MOVIE_DETAIL_PATH } from "../utils/constants";
 
-export default function MovieCard({
+export default function SearchMovieCard({
   imdbID,
   Title,
   Year,
