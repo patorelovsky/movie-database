@@ -2,12 +2,12 @@ import axios from "axios";
 
 const MOVIES_ENDPOINT = "http://www.omdbapi.com";
 
-type Rating = {
+type MovieRating = {
   Source: string;
   Value: string;
 };
 
-export type MovieDetail = {
+export type DetailMovie = {
   imdbID: string;
   Actors: string;
   Awards: string;
@@ -22,7 +22,7 @@ export type MovieDetail = {
   Poster: string;
   Production: string;
   Rated: string;
-  Ratings: Rating;
+  Ratings: MovieRating[];
   Released: string;
   Runtime: string;
   Title: string;
@@ -32,6 +32,9 @@ export type MovieDetail = {
   Year: string;
   imdbRating: string;
   imdbVotes: string;
+};
+
+type Response = DetailMovie & {
   Response: "True" | "False";
   Error: string;
 };
@@ -41,7 +44,7 @@ export async function fetchMovieDetailApi(movieId: string) {
     throw Error("Invalid movie ID.");
   }
 
-  const { data } = await axios.get<MovieDetail>(MOVIES_ENDPOINT, {
+  const { data } = await axios.get<Response>(MOVIES_ENDPOINT, {
     params: {
       i: movieId,
       r: "json",
