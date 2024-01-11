@@ -1,5 +1,5 @@
 import MenuIcon from "@mui/icons-material/Menu";
-import MovieIcon from "@mui/icons-material/Movie";
+import TheatersIcon from "@mui/icons-material/Theaters";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -44,7 +44,7 @@ export default function ResponsiveAppBar({
     <AppBar position="sticky">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <MovieIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <TheatersIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -103,7 +103,7 @@ export default function ResponsiveAppBar({
               </Menu>
             </Box>
           )}
-          <MovieIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          <TheatersIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
