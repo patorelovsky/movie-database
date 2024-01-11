@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { useEffect } from "react";
 import { fetchMovies, setPage, useAppDispatch, useAppSelector } from "../redux";
-import SearchMovieCard from "./SearchMovieCard";
+import MovieSearchCard from "./MovieSearchCard";
 import MovieSearchBar from "./MovieSearchBar";
 
 export default function MovieSearchPage() {
@@ -40,7 +40,7 @@ export default function MovieSearchPage() {
           <Grid container spacing={2} sx={{ mt: 4, mb: 4 }}>
             {data.movies.map((movie) => (
               <Grid item key={movie.imdbID}>
-                <SearchMovieCard {...movie} />
+                <MovieSearchCard {...movie} />
               </Grid>
             ))}
           </Grid>
