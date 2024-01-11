@@ -1,11 +1,12 @@
-import { Alert, Box, LinearProgress, Paper } from "@mui/material";
+import { Alert, Box, LinearProgress } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { MovieDetail, fetchMovieDetailApi } from "../api";
+import { DetailMovie, fetchMovieDetailApi } from "../api";
+import DetailMovieCard from "./MovieDetailCard";
 
 export default function MovieDetailPage() {
   const [isLoading, setIsLoading] = useState(true);
-  const [movie, setMovie] = useState<MovieDetail>();
+  const [movie, setMovie] = useState<DetailMovie>();
   const [error, setError] = useState<string>("");
   const { id } = useParams();
 
@@ -31,12 +32,7 @@ export default function MovieDetailPage() {
           {error}
         </Alert>
       )}
-      {movie && (
-        <Paper sx={{ m: 2, p: 2 }}>
-          <h1>{movie.Title}</h1>
-          <img src={movie.Poster} alt="" />
-        </Paper>
-      )}
+      {movie && <DetailMovieCard {...movie} />}
     </Box>
   );
 }
