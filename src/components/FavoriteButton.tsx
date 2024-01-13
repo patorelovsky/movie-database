@@ -15,15 +15,15 @@ type FavoriteButtonProps = {
 
 export default function FavoriteButton({ movie }: FavoriteButtonProps) {
   const favoriteMovies = useAppSelector(({ favoriteMovies }) => favoriteMovies);
-  const isFavorite = (movie: SearchMovie) => {
-    return favoriteMovies.find((favMovie) => favMovie.imdbID === movie.imdbID);
+  const isFavorite = ({ imdbID }: SearchMovie) => {
+    return favoriteMovies.find((favMovie) => favMovie.imdbID === imdbID);
   };
   const dispatch = useAppDispatch();
-  const handleFavoriteClick = (movie: SearchMovie) => {
-    dispatch(addToFavoriteMovies(movie));
+  const handleFavoriteClick = (movieToFav: SearchMovie) => {
+    dispatch(addToFavoriteMovies(movieToFav));
   };
-  const handleUnfavoriteClick = (movie: SearchMovie) => {
-    dispatch(removeFromFavoriteMovies(movie.imdbID));
+  const handleUnfavoriteClick = ({ imdbID }: SearchMovie) => {
+    dispatch(removeFromFavoriteMovies(imdbID));
   };
 
   return isFavorite(movie) ? (
