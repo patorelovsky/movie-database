@@ -2,13 +2,11 @@ import { configureStore } from "@reduxjs/toolkit";
 import moviesSlice from "./slices/moviesSlice";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import movieSearchSlice from "./slices/movieSearchSlice";
-import favoriteMoviesSlice from "./slices/favoriteMoviesSlice";
 
 export const store = configureStore({
   reducer: {
     movies: moviesSlice,
     movieSearch: movieSearchSlice,
-    favoriteMovies: favoriteMoviesSlice,
   },
 });
 
