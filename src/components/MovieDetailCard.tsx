@@ -37,24 +37,12 @@ export default function MovieDetailCard(movie: DetailMovie) {
             </Tooltip>
           </Stack>
           <Divider sx={{ mt: 1, mb: 1 }} />
-          <LabelValueRow
-            label="Director"
-            value={movie.Director}
-            direction="row"
-          />
-          <LabelValueRow label="Writer" value={movie.Writer} direction="row" />
-          <LabelValueRow label="Actors" value={movie.Actors} direction="row" />
-          <LabelValueRow
-            label="Language"
-            value={movie.Language}
-            direction="row"
-          />
-          <LabelValueRow
-            label="Country"
-            value={movie.Country}
-            direction="row"
-          />
-          <LabelValueRow label="Awards" value={movie.Awards} direction="row" />
+          <LabelValueRow width={80} label="Director" value={movie.Director} />
+          <LabelValueRow width={80} label="Writer" value={movie.Writer} />
+          <LabelValueRow width={80} label="Actors" value={movie.Actors} />
+          <LabelValueRow width={80} label="Language" value={movie.Language} />
+          <LabelValueRow width={80} label="Country" value={movie.Country} />
+          <LabelValueRow width={80} label="Awards" value={movie.Awards} />
           <Divider sx={{ fontWeight: 500 }}>Plot</Divider>
           <Typography>{movie.Plot}</Typography>
           <Stack direction="row" spacing={1} mt="auto" ml="auto">
@@ -90,12 +78,18 @@ type LabelValueRowProps = {
   label: string;
   value: string;
   direction?: "row" | "column";
+  width?: number;
 };
 
-function LabelValueRow({ label, value, direction }: LabelValueRowProps) {
+function LabelValueRow({
+  label,
+  value,
+  direction = "row",
+  width,
+}: LabelValueRowProps) {
   return (
     <Stack direction={direction} alignItems="center">
-      <Typography mr={2} fontWeight={500}>
+      <Typography fontWeight={500} width={width}>
         {label}
       </Typography>
       <Typography>{value}</Typography>
