@@ -1,7 +1,7 @@
 import { Alert, Box, LinearProgress } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { DetailMovie, fetchMovieDetailApi } from "../api";
+import { DetailMovie, fetchMovieDetailApi } from "../services";
 import DetailMovieCard from "./MovieDetailCard";
 
 export default function MovieDetailPage() {

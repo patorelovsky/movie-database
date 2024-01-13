@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { fetchMoviesApi } from "../../api";
+import { fetchMoviesApi } from "../../services";
 
 export type FetchMoviesArgs = {
   searchTerm: string;

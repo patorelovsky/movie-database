@@ -9,7 +9,7 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import { DetailMovie } from "../api";
+import { DetailMovie } from "../services";
 import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import { Fragment } from "react";
 

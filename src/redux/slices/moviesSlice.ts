@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchMovies } from "../thunks/fetchMovies";
-import { SearchMovie } from "../../api";
+import { SearchMovie } from "../../services";
 
 const PAGE_SIZE = 10;
 

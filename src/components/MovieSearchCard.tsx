@@ -5,7 +5,7 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import { SearchMovie } from "../api";
+import { SearchMovie } from "../services";
 import { useNavigate } from "react-router-dom";
 import { MOVIE_DETAIL_PATH } from "../utils/constants";
 
