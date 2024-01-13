@@ -15,16 +15,35 @@ const favoriteMoviesSlice = createSlice({
     getFavoriteMovies() {
       return getFavorites();
     },
-    addToFavoriteMovies(_state, { payload }: PayloadAction<SearchMovie>) {
-      addToFavorites(payload);
+    addToFavoriteMovies(
+      state,
+      { payload: newMovie }: PayloadAction<SearchMovie>
+    ) {
+      const index = state.findIndex(
+        (movie) => movie.imdbID === newMovie.imdbID
+      );
+      if (index === -1) {
+        addToFavorites(newMovie);
+        state.push(newMovie);
+      }
     },
-    removeFromFavoriteMovies(state, { payload }: PayloadAction<SearchMovie>) {
-      removeFromFavorites(payload.imdbID);
+    removeFromFavoriteMovies(
+      state,
+      { payload: imdbID }: PayloadAction<string>
+    ) {
+      removeFromFavorites(imdbID);
+      const index = state.findIndex((movie) => movie.imdbID === imdbID);
+      if (index > -1) {
+        state.splice(index, 1);
+      }
     },
   },
 });
 
-const { getFavoriteMovies, addToFavoriteMovies, removeFromFavoriteMovies } =
-  favoriteMoviesSlice.actions;
+export const {
+  getFavoriteMovies,
+  addToFavoriteMovies,
+  removeFromFavoriteMovies,
+} = favoriteMoviesSlice.actions;
 
 export default favoriteMoviesSlice.reducer;
