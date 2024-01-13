@@ -3,11 +3,13 @@ import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import { IconButton, Tooltip } from "@mui/material";
 import {
   addToFavoriteMovies,
+  getFavoriteMovies,
   removeFromFavoriteMovies,
   useAppDispatch,
   useAppSelector,
 } from "../redux";
 import { SearchMovie } from "../services";
+import { useEffect } from "react";
 
 type FavoriteButtonProps = {
   movie: SearchMovie;
@@ -20,6 +22,9 @@ export default function FavoriteButton({ movie, size }: FavoriteButtonProps) {
     return favoriteMovies.find((favMovie) => favMovie.imdbID === imdbID);
   };
   const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(getFavoriteMovies());
+  }, [dispatch]);
   const handleFavoriteClick = (movieToFav: SearchMovie) => {
     dispatch(addToFavoriteMovies(movieToFav));
   };
