@@ -1,5 +1,5 @@
 import { Alert, Box } from "@mui/material";
-import MovieSearchGrid from "./MovieSearchGrid";
+import MovieSearchGrid from "../components/MovieSearchGrid";
 import { getFavoriteMovies, useAppDispatch, useAppSelector } from "../redux";
 import { useEffect } from "react";
 

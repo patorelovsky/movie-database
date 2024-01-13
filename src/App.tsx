@@ -1,11 +1,11 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import MovieDetailPage from "./components/MovieDetailPage";
-import MovieSearchPage from "./components/MovieSearchPage";
+import MovieDetailPage from "./pages/MovieDetailPage";
+import MovieSearchPage from "./pages/MovieSearchPage";
 import ResponsiveAppBar, {
   ResponsiveAppBarNavMenuItem,
 } from "./components/ResponsiveAppBar";
 import { APP_TITLE, MOVIE_DETAIL_PATH } from "./utils/constants";
-import FavoriteMoviesPage from "./components/FavoriteMoviesPage";
+import FavoriteMoviesPage from "./pages/FavoriteMoviesPage";
 
 const movieSearchNavMenuItem: ResponsiveAppBarNavMenuItem = {
   label: "Movie Search",

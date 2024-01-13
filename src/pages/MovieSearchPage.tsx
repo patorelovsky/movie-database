@@ -1,8 +1,8 @@
 import { Alert, Box, LinearProgress, Pagination, Stack } from "@mui/material";
 import { useEffect } from "react";
 import { fetchMovies, setPage, useAppDispatch, useAppSelector } from "../redux";
-import MovieSearchBar from "./MovieSearchBar";
-import MovieSearchGrid from "./MovieSearchGrid";
+import MovieSearchBar from "../components/MovieSearchBar";
+import MovieSearchGrid from "../components/MovieSearchGrid";
 
 export default function MovieSearchPage() {
   const { error, data, isLoading } = useAppSelector(({ movies }) => movies);

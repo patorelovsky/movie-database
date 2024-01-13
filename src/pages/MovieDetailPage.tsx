@@ -2,7 +2,7 @@ import { Alert, Box, LinearProgress } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { DetailMovie, fetchMovieDetailApi } from "../services";
-import DetailMovieCard from "./MovieDetailCard";
+import DetailMovieCard from "../components/MovieDetailCard";
 
 export default function MovieDetailPage() {
   const [isLoading, setIsLoading] = useState(true);
