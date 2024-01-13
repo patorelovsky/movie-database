@@ -1,10 +1,11 @@
+import { SearchMovie } from "./searchMovie";
+
 type MovieRating = {
   Source: string;
   Value: string;
 };
 
-export type DetailMovie = {
-  imdbID: string;
+export type DetailMovie = SearchMovie & {
   Actors: string;
   Awards: string;
   BoxOffice: string;
@@ -15,17 +16,14 @@ export type DetailMovie = {
   Language: string;
   Metascore: string;
   Plot: string;
-  Poster: string;
   Production: string;
   Rated: string;
   Ratings: MovieRating[];
   Released: string;
   Runtime: string;
-  Title: string;
   Type: "movie" | "series" | "episode";
   Website: string;
   Writer: string;
-  Year: string;
   imdbRating: string;
   imdbVotes: string;
 };
