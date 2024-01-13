@@ -1,0 +1,31 @@
+.movieSearchCard {
+  height: 100px;
+  width: 400px;
+  display: flex;
+  align-items: start;
+
+  &:hover {
+    .title {
+      text-decoration: underline;
+    }
+  }
+}
+
+.poster {
+  object-fit: contain;
+  flex: 1;
+  height: 100px;
+  width: 70px;
+  cursor: pointer;
+}
+
+.content {
+  margin-left: auto;
+  width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.title {
+  cursor: pointer;
+}

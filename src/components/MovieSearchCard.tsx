@@ -5,46 +5,37 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import { SearchMovie } from "../services";
 import { useNavigate } from "react-router-dom";
+import { SearchMovie } from "../services";
 import { MOVIE_DETAIL_PATH } from "../utils/constants";
+import styles from "./MovieSearchCard.module.scss";
 
-export default function MovieSearchCard({
-  imdbID,
-  Title,
-  Year,
-  Poster,
-}: SearchMovie) {
+export default function MovieSearchCard(movie: SearchMovie) {
   const navigate = useNavigate();
-  const handleClick = () => {
-    navigate(`${MOVIE_DETAIL_PATH}/${imdbID}`);
+  const handleCardClick = () => {
+    navigate(`${MOVIE_DETAIL_PATH}/${movie.imdbID}`);
   };
 
   return (
-    <Card
-      component="a"
-      onClick={handleClick}
-      sx={{ height: 100, width: 400, display: "flex", cursor: "pointer" }}
-    >
+    <Card className={styles.movieSearchCard}>
       <CardMedia
+        className={styles.poster}
         component="img"
-        image={Poster}
-        sx={{ objectFit: "contain", flex: 1, height: 100, width: 70 }}
+        onClick={handleCardClick}
+        image={movie.Poster}
       />
-      <CardContent
-        sx={{
-          ml: "auto",
-          width: 300,
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-        }}
-      >
-        <Tooltip title={Title}>
-          <Typography noWrap variant="h6" fontSize={16}>
-            {Title}
+      <CardContent className={styles.content}>
+        <Tooltip className={styles.title} title={movie.Title}>
+          <Typography
+            onClick={handleCardClick}
+            noWrap
+            variant="h6"
+            fontSize={16}
+          >
+            {movie.Title}
           </Typography>
         </Tooltip>
-        <Typography color="text.secondary">{Year}</Typography>
+        <Typography color="text.secondary">{movie.Year}</Typography>
       </CardContent>
     </Card>
   );
