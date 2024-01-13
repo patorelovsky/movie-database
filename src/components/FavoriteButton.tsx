@@ -36,7 +36,7 @@ export default function FavoriteButton({ movie, size }: FavoriteButtonProps) {
   ) : (
     <Tooltip title="Add to favorites">
       <IconButton onClick={() => handleFavoriteClick(movie)} size={size}>
-        <Star fontSize={size} />
+        <StarOutlineIcon fontSize={size} />
       </IconButton>
     </Tooltip>
   );
