@@ -1,13 +1,7 @@
 import axios from "axios";
+import { DetailMovie, SearchMovie } from ".";
 
 const MOVIES_ENDPOINT = "http://www.omdbapi.com";
-
-export type SearchMovie = {
-  imdbID: string;
-  Title: string;
-  Year: string;
-  Poster: string;
-};
 
 type SearchResponse = {
   Response: "True" | "False";
@@ -37,38 +31,6 @@ export async function fetchMoviesApi(searchTerm: string, page: number) {
 
   return { totalResults: data.totalResults, movies: data.Search ?? [] };
 }
-
-type MovieRating = {
-  Source: string;
-  Value: string;
-};
-
-export type DetailMovie = {
-  imdbID: string;
-  Actors: string;
-  Awards: string;
-  BoxOffice: string;
-  Country: string;
-  DVD: string;
-  Director: string;
-  Genre: string;
-  Language: string;
-  Metascore: string;
-  Plot: string;
-  Poster: string;
-  Production: string;
-  Rated: string;
-  Ratings: MovieRating[];
-  Released: string;
-  Runtime: string;
-  Title: string;
-  Type: "movie" | "series" | "episode";
-  Website: string;
-  Writer: string;
-  Year: string;
-  imdbRating: string;
-  imdbVotes: string;
-};
 
 type DetailResponse = DetailMovie & {
   Response: "True" | "False";
