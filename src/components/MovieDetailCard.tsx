@@ -14,12 +14,12 @@ import FavoriteButton from "./FavoriteButton";
 
 export default function MovieDetailCard(movie: DetailMovie) {
   return (
-    <Card sx={{ m: 2 }}>
-      <Stack direction="row">
+    <Card sx={{ m: 2, maxWidth: 1400 }}>
+      <Stack sx={{ flexDirection: { sm: "column", md: "row" } }}>
         <CardMedia
           component="img"
           image={movie.Poster}
-          sx={{ objectFit: "contain", maxWidth: 300 }}
+          sx={{ objectFit: "contain", maxWidth: 300, m: "auto" }}
         />
         <CardContent sx={{ display: "flex", flexDirection: "column" }}>
           <Stack direction="row" alignItems="center">
@@ -89,7 +89,12 @@ function LabelValueRow({
 }: LabelValueRowProps) {
   return (
     <Stack direction={direction} alignItems="center">
-      <Typography fontWeight={500} width={width}>
+      <Typography
+        flexBasis={width}
+        flexShrink={0}
+        fontWeight={500}
+        width={width}
+      >
         {label}
       </Typography>
       <Typography>{value}</Typography>
