@@ -10,19 +10,22 @@ export function getFavoriteMovies(): SearchMovie[] {
   return [];
 }
 
-export function addToFavoriteMovies(movie: SearchMovie) {
-  const oldFavMovies = getFavoriteMovies();
-  localStorage.setItem(
-    LOCAL_STORAGE_KEY,
-    JSON.stringify([movie, ...oldFavMovies])
+export function addToFavoriteMovies(newMovie: SearchMovie) {
+  const favMovies = getFavoriteMovies();
+  const index = favMovies.findIndex(
+    (movie) => movie.imdbID === newMovie.imdbID
   );
+  if (index === -1) {
+    favMovies.push(newMovie);
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(favMovies));
+  }
 }
 
 export function removeFromFavoriteMovies(movieId: string) {
-  const movies = getFavoriteMovies();
-  const movieIndex = movies.findIndex((movie) => movie.imdbID === movieId);
-  if (movieIndex > -1) {
-    movies.splice(movieIndex, 1);
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(movies));
+  const favMovies = getFavoriteMovies();
+  const index = favMovies.findIndex((movie) => movie.imdbID === movieId);
+  if (index > -1) {
+    favMovies.splice(index, 1);
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(favMovies));
   }
 }
