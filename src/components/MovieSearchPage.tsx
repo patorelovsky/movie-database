@@ -1,14 +1,6 @@
-import {
-  Alert,
-  Box,
-  Grid,
-  LinearProgress,
-  Pagination,
-  Stack,
-} from "@mui/material";
+import { Alert, Box, LinearProgress, Pagination, Stack } from "@mui/material";
 import { useEffect } from "react";
 import { fetchMovies, setPage, useAppDispatch, useAppSelector } from "../redux";
-import MovieSearchCard from "./MovieSearchCard";
 import MovieSearchBar from "./MovieSearchBar";
 import MovieSearchGrid from "./MovieSearchGrid";
 
