@@ -4,14 +4,13 @@ import {
   CardMedia,
   Chip,
   Divider,
-  IconButton,
   Stack,
   Tooltip,
   Typography,
 } from "@mui/material";
-import { DetailMovie } from "../services";
-import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import { Fragment } from "react";
+import { DetailMovie } from "../services";
+import FavoriteButton from "./FavoriteButton";
 
 export default function MovieDetailCard(movie: DetailMovie) {
   return (
@@ -24,10 +23,10 @@ export default function MovieDetailCard(movie: DetailMovie) {
         />
         <CardContent sx={{ display: "flex", flexDirection: "column" }}>
           <Stack direction="row" alignItems="center">
-            <Typography variant="h4">{movie.Title}</Typography>
-            <IconButton size="large" sx={{ ml: "auto" }}>
-              <StarOutlineIcon fontSize="large" />
-            </IconButton>
+            <Typography mr="auto" variant="h4">
+              {movie.Title}
+            </Typography>
+            <FavoriteButton movie={movie} />
           </Stack>
           <Stack direction="row" spacing={1}>
             <Tooltip title={`Released ${movie.Released}`}>
@@ -76,14 +75,9 @@ export default function MovieDetailCard(movie: DetailMovie) {
             direction="column"
           />
           {movie.Ratings.map(({ Source, Value }) => (
-            <Fragment>
+            <Fragment key={Source}>
               <Divider flexItem orientation="vertical" />
-              <LabelValueRow
-                key={Source}
-                label={Source}
-                value={Value}
-                direction="column"
-              />
+              <LabelValueRow label={Source} value={Value} direction="column" />
             </Fragment>
           ))}
         </Stack>

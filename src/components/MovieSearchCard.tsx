@@ -8,6 +8,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { SearchMovie } from "../services";
 import { MOVIE_DETAIL_PATH } from "../utils/constants";
+import FavoriteButton from "./FavoriteButton";
 import styles from "./MovieSearchCard.module.scss";
 
 export default function MovieSearchCard(movie: SearchMovie) {
@@ -37,6 +38,7 @@ export default function MovieSearchCard(movie: SearchMovie) {
         </Tooltip>
         <Typography color="text.secondary">{movie.Year}</Typography>
       </CardContent>
+      <FavoriteButton movie={movie} />
     </Card>
   );
 }
