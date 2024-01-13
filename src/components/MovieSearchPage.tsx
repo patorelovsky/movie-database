@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { fetchMovies, setPage, useAppDispatch, useAppSelector } from "../redux";
 import MovieSearchCard from "./MovieSearchCard";
 import MovieSearchBar from "./MovieSearchBar";
+import MovieSearchGrid from "./MovieSearchGrid";
 
 export default function MovieSearchPage() {
   const { error, data, isLoading } = useAppSelector(({ movies }) => movies);
@@ -36,15 +37,7 @@ export default function MovieSearchPage() {
         sx={{ m: 4, height: "100%", mt: isLoading ? "12px" : "16px" }}
       >
         <MovieSearchBar searchTerm={searchTerm} disabled={isLoading} />
-        {data && (
-          <Grid container spacing={2} sx={{ mt: 4, mb: 4 }}>
-            {data.movies.map((movie) => (
-              <Grid item key={movie.imdbID}>
-                <MovieSearchCard {...movie} />
-              </Grid>
-            ))}
-          </Grid>
-        )}
+        {data && <MovieSearchGrid movies={data.movies} />}
         {data && (
           <Pagination
             size="large"
