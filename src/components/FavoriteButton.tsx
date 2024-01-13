@@ -11,9 +11,10 @@ import { SearchMovie } from "../services";
 
 type FavoriteButtonProps = {
   movie: SearchMovie;
+  size?: "small" | "large" | "medium";
 };
 
-export default function FavoriteButton({ movie }: FavoriteButtonProps) {
+export default function FavoriteButton({ movie, size }: FavoriteButtonProps) {
   const favoriteMovies = useAppSelector(({ favoriteMovies }) => favoriteMovies);
   const isFavorite = ({ imdbID }: SearchMovie) => {
     return favoriteMovies.find((favMovie) => favMovie.imdbID === imdbID);
@@ -28,14 +29,14 @@ export default function FavoriteButton({ movie }: FavoriteButtonProps) {
 
   return isFavorite(movie) ? (
     <Tooltip title="Remove from favorites">
-      <IconButton onClick={() => handleUnfavoriteClick(movie)}>
-        <Star />
+      <IconButton onClick={() => handleUnfavoriteClick(movie)} size={size}>
+        <Star fontSize={size} />
       </IconButton>
     </Tooltip>
   ) : (
     <Tooltip title="Add to favorites">
-      <IconButton onClick={() => handleFavoriteClick(movie)}>
-        <StarOutlineIcon />
+      <IconButton onClick={() => handleFavoriteClick(movie)} size={size}>
+        <Star fontSize={size} />
       </IconButton>
     </Tooltip>
   );

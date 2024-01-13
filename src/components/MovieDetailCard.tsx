@@ -26,7 +26,7 @@ export default function MovieDetailCard(movie: DetailMovie) {
             <Typography mr="auto" variant="h4">
               {movie.Title}
             </Typography>
-            <FavoriteButton movie={movie} />
+            <FavoriteButton movie={movie} size="large" />
           </Stack>
           <Stack direction="row" spacing={1}>
             <Tooltip title={`Released ${movie.Released}`}>
