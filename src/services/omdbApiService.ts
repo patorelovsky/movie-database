@@ -1,7 +1,7 @@
 import axios from "axios";
 import { DetailMovie, SearchMovie } from ".";
 
-const MOVIES_ENDPOINT = "http://www.omdbapi.com";
+const MOVIES_ENDPOINT = "https://www.omdbapi.com";
 
 type SearchResponse = {
   Response: "True" | "False";
