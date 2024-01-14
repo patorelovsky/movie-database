@@ -28,7 +28,7 @@ function App() {
   return (
     <BrowserRouter>
       <ResponsiveAppBar
-        title={process.env.REACT_APP_SITE_TITLE as string}
+        title={process.env.REACT_APP_SITE_TITLE || "Movie Database"}
         navMenuItems={navMenuItems}
       />
       <Routes>
