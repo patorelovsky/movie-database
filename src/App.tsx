@@ -1,9 +1,10 @@
-import { lazy } from "react";
+import { Suspense, lazy } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import ResponsiveAppBar, {
   ResponsiveAppBarNavMenuItem,
 } from "./components/ResponsiveAppBar";
 import { APP_TITLE, MOVIE_DETAIL_PATH } from "./utils/constants";
+import Loader from "./components/Loader";
 
 const MovieDetailPage = lazy(() => import("./pages/MovieDetailPage"));
 const MovieSearchPage = lazy(() => import("./pages/MovieSearchPage"));
@@ -33,15 +34,27 @@ function App() {
         />
         <Route
           path={movieSearchNavMenuItem.path}
-          element={<MovieSearchPage />}
+          element={
+            <Suspense fallback={<Loader />}>
+              <MovieSearchPage />
+            </Suspense>
+          }
         />
         <Route
           path={`${MOVIE_DETAIL_PATH}/:id`}
-          element={<MovieDetailPage />}
+          element={
+            <Suspense fallback={<Loader />}>
+              <MovieDetailPage />
+            </Suspense>
+          }
         />
         <Route
           path={favoriteMoviesNavMenuItem.path}
-          element={<FavoriteMoviesPage />}
+          element={
+            <Suspense fallback={<Loader />}>
+              <FavoriteMoviesPage />
+            </Suspense>
+          }
         />
       </Routes>
     </BrowserRouter>
