@@ -1,10 +1,10 @@
+import { LinearProgress } from "@mui/material";
 import { Suspense, lazy } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import ResponsiveAppBar, {
   ResponsiveAppBarNavMenuItem,
 } from "./components/ResponsiveAppBar";
 import { APP_TITLE, MOVIE_DETAIL_PATH } from "./utils/constants";
-import Loader from "./components/Loader";
 
 const MovieDetailPage = lazy(() => import("./pages/MovieDetailPage"));
 const MovieSearchPage = lazy(() => import("./pages/MovieSearchPage"));
@@ -35,7 +35,7 @@ function App() {
         <Route
           path={movieSearchNavMenuItem.path}
           element={
-            <Suspense fallback={<Loader />}>
+            <Suspense fallback={<LinearProgress />}>
               <MovieSearchPage />
             </Suspense>
           }
@@ -43,7 +43,7 @@ function App() {
         <Route
           path={`${MOVIE_DETAIL_PATH}/:id`}
           element={
-            <Suspense fallback={<Loader />}>
+            <Suspense fallback={<LinearProgress />}>
               <MovieDetailPage />
             </Suspense>
           }
@@ -51,7 +51,7 @@ function App() {
         <Route
           path={favoriteMoviesNavMenuItem.path}
           element={
-            <Suspense fallback={<Loader />}>
+            <Suspense fallback={<LinearProgress />}>
               <FavoriteMoviesPage />
             </Suspense>
           }
