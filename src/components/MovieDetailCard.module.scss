@@ -35,7 +35,9 @@
 .ratings {
   display: flex;
   justify-content: space-around;
+  align-items: center;
   flex-direction: row;
+  text-align: center;
 
   .labelValueRow {
     align-items: center;
