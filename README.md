@@ -15,6 +15,7 @@ This is a simple React application for managing favorite movies using the OMDb A
 ## Features
 
 - Search for movies using the OMDb API.
+- View movie details
 - Add movies to your favorites.
 - View and manage your favorite movies.
 
