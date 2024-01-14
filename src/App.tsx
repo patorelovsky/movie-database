@@ -1,11 +1,13 @@
+import { lazy } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import MovieDetailPage from "./pages/MovieDetailPage";
-import MovieSearchPage from "./pages/MovieSearchPage";
 import ResponsiveAppBar, {
   ResponsiveAppBarNavMenuItem,
 } from "./components/ResponsiveAppBar";
 import { APP_TITLE, MOVIE_DETAIL_PATH } from "./utils/constants";
-import FavoriteMoviesPage from "./pages/FavoriteMoviesPage";
+
+const MovieDetailPage = lazy(() => import("./pages/MovieDetailPage"));
+const MovieSearchPage = lazy(() => import("./pages/MovieSearchPage"));
+const FavoriteMoviesPage = lazy(() => import("./pages/FavoriteMoviesPage"));
 
 const movieSearchNavMenuItem: ResponsiveAppBarNavMenuItem = {
   label: "Movie Search",
