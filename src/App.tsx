@@ -4,11 +4,12 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import ResponsiveAppBar, {
   ResponsiveAppBarNavMenuItem,
 } from "./components/ResponsiveAppBar";
-import { APP_TITLE, MOVIE_DETAIL_PATH } from "./utils/constants";
 
 const MovieDetailPage = lazy(() => import("./pages/MovieDetailPage"));
 const MovieSearchPage = lazy(() => import("./pages/MovieSearchPage"));
 const FavoriteMoviesPage = lazy(() => import("./pages/FavoriteMoviesPage"));
+
+export const MOVIE_DETAIL_PATH = "/movie-detail";
 
 const movieSearchNavMenuItem: ResponsiveAppBarNavMenuItem = {
   label: "Movie Search",
@@ -26,7 +27,10 @@ const navMenuItems: ResponsiveAppBarNavMenuItem[] = [
 function App() {
   return (
     <BrowserRouter>
-      <ResponsiveAppBar title={APP_TITLE} navMenuItems={navMenuItems} />
+      <ResponsiveAppBar
+        title={process.env.REACT_APP_SITE_TITLE as string}
+        navMenuItems={navMenuItems}
+      />
       <Routes>
         <Route
           path="/"
