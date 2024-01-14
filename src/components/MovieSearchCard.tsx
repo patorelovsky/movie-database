@@ -14,7 +14,7 @@ import { MOVIE_DETAIL_PATH } from "../App";
 export default function MovieSearchCard(movie: SearchMovie) {
   const navigate = useNavigate();
   const handleCardClick = () => {
-    navigate(`${MOVIE_DETAIL_PATH}/${movie.imdbID}`);
+    navigate(`${MOVIE_DETAIL_PATH}/${encodeURIComponent(movie.imdbID)}`);
   };
 
   return (
