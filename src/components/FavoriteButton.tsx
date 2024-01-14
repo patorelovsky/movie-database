@@ -65,7 +65,7 @@ export default function FavoriteButton({ movie, size }: FavoriteButtonProps) {
       </Tooltip>
       <Snackbar
         open={snackbarOpen}
-        autoHideDuration={500}
+        autoHideDuration={800}
         onClose={handleSnackbarClose}
       >
         <Alert security="success" onClose={handleSnackbarClose}>
