@@ -1,0 +1,65 @@
+.movieDetailCard {
+  margin: 16px;
+  max-width: 1400px;
+}
+
+.poster {
+  object-fit: contain;
+  max-width: 300px;
+  margin: auto;
+}
+
+.titleBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+
+  .labelValueRow {
+    display: flex;
+    flex-direction: row;
+
+    &__label {
+      width: 80px;
+      flex-shrink: 0;
+      flex-basis: 80px;
+    }
+  }
+}
+
+.ratings {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+
+  .labelValueRow {
+    align-items: center;
+  }
+}
+
+.labelValueRow {
+  &__label {
+    font-weight: 500;
+  }
+}
+
+.divider {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.chips {
+  display: flex;
+  flex-direction: row;
+  column-gap: 8px;
+  &:last-child {
+    margin-top: auto;
+    margin-left: auto;
+  }
+}

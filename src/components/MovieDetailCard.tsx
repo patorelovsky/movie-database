@@ -11,24 +11,23 @@ import {
 import { Fragment } from "react";
 import { DetailMovie } from "../services";
 import FavoriteButton from "./FavoriteButton";
+import styles from "./MovieDetailCard.module.scss";
 
 export default function MovieDetailCard(movie: DetailMovie) {
   return (
-    <Card sx={{ m: 2, maxWidth: 1400 }}>
+    <Card className={styles.movieDetailCard}>
       <Stack sx={{ flexDirection: { sm: "column", md: "row" } }}>
         <CardMedia
+          className={styles.poster}
           component="img"
           image={movie.Poster}
-          sx={{ objectFit: "contain", maxWidth: 300, m: "auto" }}
         />
-        <CardContent sx={{ display: "flex", flexDirection: "column" }}>
-          <Stack direction="row" alignItems="center">
-            <Typography mr="auto" variant="h4">
-              {movie.Title}
-            </Typography>
+        <CardContent className={styles.content}>
+          <Stack className={styles.titleBar}>
+            <Typography variant="h4">{movie.Title}</Typography>
             <FavoriteButton movie={movie} size="large" />
           </Stack>
-          <Stack direction="row" spacing={1}>
+          <Stack className={styles.chips}>
             <Tooltip title={`Released ${movie.Released}`}>
               <Chip variant="outlined" label={movie.Year} size="small" />
             </Tooltip>
@@ -36,39 +35,36 @@ export default function MovieDetailCard(movie: DetailMovie) {
               <Chip variant="outlined" label={movie.Rated} size="small" />
             </Tooltip>
           </Stack>
-          <Divider sx={{ mt: 1, mb: 1 }} />
-          <LabelValueRow width={80} label="Director" value={movie.Director} />
-          <LabelValueRow width={80} label="Writer" value={movie.Writer} />
-          <LabelValueRow width={80} label="Actors" value={movie.Actors} />
-          <LabelValueRow width={80} label="Language" value={movie.Language} />
-          <LabelValueRow width={80} label="Country" value={movie.Country} />
-          <LabelValueRow width={80} label="Awards" value={movie.Awards} />
-          <Divider sx={{ fontWeight: 500 }}>Plot</Divider>
+          <Divider className={styles.divider} />
+          <LabelValueRow label="Director" value={movie.Director} />
+          <LabelValueRow label="Writer" value={movie.Writer} />
+          <LabelValueRow label="Actors" value={movie.Actors} />
+          <LabelValueRow label="Language" value={movie.Language} />
+          <LabelValueRow label="Country" value={movie.Country} />
+          <LabelValueRow label="Awards" value={movie.Awards} />
+          <Divider className={styles.divider}>Plot</Divider>
           <Typography>{movie.Plot}</Typography>
-          <Stack direction="row" spacing={1} mt="auto" ml="auto">
+          <Stack className={styles.chips}>
             {movie.Genre.split(",").map((genre) => (
               <Chip key={genre} color="primary" label={genre} />
             ))}
           </Stack>
         </CardContent>
       </Stack>
-      <Divider variant="middle" sx={{ fontWeight: 500 }}>
+      <Divider variant="middle" className={styles.divider}>
         Ratings
       </Divider>
-      <CardContent>
-        <Stack direction="row" spacing={1} justifyContent="space-around">
-          <LabelValueRow
-            label={`IMDb rating`}
-            value={`${movie.imdbRating}/10 - ${movie.imdbVotes} votes`}
-            direction="column"
-          />
-          {movie.Ratings.map(({ Source, Value }) => (
-            <Fragment key={Source}>
-              <Divider flexItem orientation="vertical" />
-              <LabelValueRow label={Source} value={Value} direction="column" />
-            </Fragment>
-          ))}
-        </Stack>
+      <CardContent className={styles.ratings}>
+        <LabelValueRow
+          label={`IMDb rating`}
+          value={`${movie.imdbRating}/10 - ${movie.imdbVotes} votes`}
+        />
+        {movie.Ratings.map(({ Source, Value }) => (
+          <Fragment key={Source}>
+            <Divider flexItem orientation="vertical" />
+            <LabelValueRow label={Source} value={Value} />
+          </Fragment>
+        ))}
       </CardContent>
     </Card>
   );
@@ -77,26 +73,12 @@ export default function MovieDetailCard(movie: DetailMovie) {
 type LabelValueRowProps = {
   label: string;
   value: string;
-  direction?: "row" | "column";
-  width?: number;
 };
 
-function LabelValueRow({
-  label,
-  value,
-  direction = "row",
-  width,
-}: LabelValueRowProps) {
+function LabelValueRow({ label, value }: LabelValueRowProps) {
   return (
-    <Stack direction={direction} alignItems="center">
-      <Typography
-        flexBasis={width}
-        flexShrink={0}
-        fontWeight={500}
-        width={width}
-      >
-        {label}
-      </Typography>
+    <Stack className={styles.labelValueRow}>
+      <Typography className={styles.labelValueRow__label}>{label}</Typography>
       <Typography>{value}</Typography>
     </Stack>
   );
