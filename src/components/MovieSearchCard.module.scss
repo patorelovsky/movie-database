@@ -1,6 +1,4 @@
 .movieSearchCard {
-  height: 100px;
-  width: 400px;
   display: flex;
   align-items: flex-start;
 
@@ -21,7 +19,7 @@
 
 .content {
   margin-left: auto;
-  width: 300px;
+  width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
 }

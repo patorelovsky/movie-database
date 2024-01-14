@@ -1,6 +1,7 @@
 import { Grid } from "@mui/material";
 import MovieSearchCard from "./MovieSearchCard";
 import { SearchMovie } from "../services";
+import styles from "./MovieSearchGrid.module.scss";
 
 type MovieSearchGridProps = {
   movies: SearchMovie[];
@@ -8,11 +9,9 @@ type MovieSearchGridProps = {
 
 export default function MovieSearchGrid({ movies }: MovieSearchGridProps) {
   return (
-    <Grid container spacing={2} sx={{ mt: 4, mb: 4 }}>
+    <Grid className={styles.movieSearchGrid}>
       {movies.map((movie) => (
-        <Grid item key={movie.imdbID}>
-          <MovieSearchCard {...movie} />
-        </Grid>
+        <MovieSearchCard key={movie.imdbID} {...movie} />
       ))}
     </Grid>
   );
