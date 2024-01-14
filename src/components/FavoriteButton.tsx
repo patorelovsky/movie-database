@@ -22,10 +22,9 @@ export default function FavoriteButton({ movie, size }: FavoriteButtonProps) {
     _event?: React.SyntheticEvent | Event,
     reason?: string
   ) => {
-    if (reason === "clickaway") {
-      return;
+    if (reason !== "clickaway") {
+      setSnackbarOpen(false);
     }
-    setSnackbarOpen(false);
   };
   const favoriteMovies = useAppSelector(({ favoriteMovies }) => favoriteMovies);
   const isFavorite = favoriteMovies.find(
@@ -46,19 +45,24 @@ export default function FavoriteButton({ movie, size }: FavoriteButtonProps) {
 
   return (
     <Fragment>
-      {isFavorite ? (
-        <Tooltip title="Remove from favorites">
-          <IconButton onClick={() => handleUnfavoriteClick(movie)} size={size}>
+      <Tooltip
+        title={isFavorite ? "Remove from favorites" : "Add to favorites"}
+      >
+        <IconButton
+          size={size}
+          onClick={() =>
+            isFavorite
+              ? handleUnfavoriteClick(movie)
+              : handleFavoriteClick(movie)
+          }
+        >
+          {isFavorite ? (
             <Star fontSize={size} />
-          </IconButton>
-        </Tooltip>
-      ) : (
-        <Tooltip title="Add to favorites">
-          <IconButton onClick={() => handleFavoriteClick(movie)} size={size}>
+          ) : (
             <StarOutlineIcon fontSize={size} />
-          </IconButton>
-        </Tooltip>
-      )}
+          )}
+        </IconButton>
+      </Tooltip>
       <Snackbar
         open={snackbarOpen}
         autoHideDuration={500}
