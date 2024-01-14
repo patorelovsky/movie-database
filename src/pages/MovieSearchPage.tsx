@@ -26,7 +26,7 @@ export default function MovieSearchPage() {
       {isLoading && <LinearProgress />}
       <Stack
         alignItems="center"
-        sx={{ m: 4, height: "100%", mt: isLoading ? "12px" : "16px" }}
+        sx={{ mx: 2, height: "100%", mt: isLoading ? "12px" : "16px" }}
       >
         <MovieSearchBar searchTerm={searchTerm} disabled={isLoading} />
         {data && <MovieSearchGrid movies={data.movies} />}
