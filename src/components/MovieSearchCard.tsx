@@ -26,10 +26,10 @@ export default function MovieSearchCard(movie: SearchMovie) {
         image={movie.Poster}
       />
       <CardContent className={styles.content}>
-        <Tooltip className={styles.title} title={movie.Title}>
+        <Tooltip title={movie.Title}>
           <Typography
+            className={styles.title}
             onClick={handleCardClick}
-            noWrap
             variant="h6"
             fontSize={16}
           >
