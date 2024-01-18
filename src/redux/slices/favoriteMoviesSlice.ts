@@ -17,10 +17,10 @@ const favoriteMoviesSlice = createSlice({
     },
     addToFavoriteMovies(
       state,
-      { payload: newMovie }: PayloadAction<SearchMovie>
+      { payload: newMovie }: PayloadAction<SearchMovie>,
     ) {
       const index = state.findIndex(
-        (movie) => movie.imdbID === newMovie.imdbID
+        (movie) => movie.imdbID === newMovie.imdbID,
       );
       if (index === -1) {
         addToFavorites(newMovie);
@@ -29,7 +29,7 @@ const favoriteMoviesSlice = createSlice({
     },
     removeFromFavoriteMovies(
       state,
-      { payload: imdbID }: PayloadAction<string>
+      { payload: imdbID }: PayloadAction<string>,
     ) {
       removeFromFavorites(imdbID);
       const index = state.findIndex((movie) => movie.imdbID === imdbID);

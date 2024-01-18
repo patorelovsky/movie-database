@@ -16,7 +16,7 @@ export default function MovieSearchPage() {
 
   const handlePaginationChange = (
     _event: React.ChangeEvent<unknown>,
-    value: number
+    value: number,
   ) => {
     dispatch(setPage(value));
   };

@@ -13,5 +13,5 @@ export const fetchMovies = createAsyncThunk(
       return undefined;
     }
     return await fetchMoviesApi(searchTerm, page);
-  }
+  },
 );

@@ -13,7 +13,7 @@ export function getFavoriteMovies(): SearchMovie[] {
 export function addToFavoriteMovies(newMovie: SearchMovie) {
   const favMovies = getFavoriteMovies();
   const index = favMovies.findIndex(
-    (movie) => movie.imdbID === newMovie.imdbID
+    (movie) => movie.imdbID === newMovie.imdbID,
   );
   if (index === -1) {
     favMovies.push(newMovie);

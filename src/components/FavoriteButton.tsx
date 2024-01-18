@@ -20,7 +20,7 @@ export default function FavoriteButton({ movie, size }: FavoriteButtonProps) {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const handleSnackbarClose = (
     _event?: React.SyntheticEvent | Event,
-    reason?: string
+    reason?: string,
   ) => {
     if (reason !== "clickaway") {
       setSnackbarOpen(false);
@@ -28,7 +28,7 @@ export default function FavoriteButton({ movie, size }: FavoriteButtonProps) {
   };
   const favoriteMovies = useAppSelector(({ favoriteMovies }) => favoriteMovies);
   const isFavorite = favoriteMovies.find(
-    (favMovie) => favMovie.imdbID === movie.imdbID
+    (favMovie) => favMovie.imdbID === movie.imdbID,
   );
   const dispatch = useAppDispatch();
   useEffect(() => {
